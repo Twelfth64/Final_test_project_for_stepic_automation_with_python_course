@@ -11,7 +11,8 @@ class ProductPage(BasePage):
         add_to_cart_button.click()
 
     def should_be_success_message(self):
-        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not presented"
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not presented"
 
     def title_of_product_should_be_displayed_in_success_message(self):
         title_of_product = self.browser.find_element(*ProductPageLocators.TITLE_OF_PRODUCT)
@@ -22,6 +23,14 @@ class ProductPage(BasePage):
         price_of_product = self.browser.find_element(*ProductPageLocators.PRICE_OF_PRODUCT)
         total_of_basket = self.browser.find_element(*ProductPageLocators.TOTAL_PRICE_OF_CART)
         assert price_of_product.text == total_of_basket.text, "The total of basket is incorrect"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def element_should_disappers(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert

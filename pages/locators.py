@@ -1,8 +1,17 @@
 from selenium.webdriver.common.by import By
 
-class MainPageLocators():
+class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    GO_TO_CART = (By.CSS_SELECTOR, ".basket-mini.pull-right.hidden-xs a")
 
+# class MainPageLocators():
+#     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+class BasketPageLocators():
+    CONTINUE_PURCHASING = (By.CSS_SELECTOR, "#content_inner a")
+    CART_IS_EMPTY = (By.CSS_SELECTOR, "#content_inner p")
+    PRODUCT_LIST = (By.CSS_SELECTOR, ".basket-items")
 
 class LoginPageLocators():
     LOGIN_BUTTON = (By.CSS_SELECTOR, "[name='login_submit']")
